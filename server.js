@@ -24,13 +24,13 @@ app.use(function (req, res, next) {
 
 const auth = (req, res, next) => {
   const indexOf = users.findIndex((user) => {
-    user.token === req.headers.token;
+    return user.token === Number(req.headers.token);
   });
   console.log(indexOf);
 };
 
 app.use("/", require("./routes/rockets"));
-app.use("/get", require("./routes/get"));
+app.use("/get", auth, require("./routes/get"));
 app.use("/login", require("./routes/login"));
 
 const port = process.env.PORT || 6001;
