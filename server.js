@@ -30,6 +30,8 @@ const auth = (req, res, next) => {
     res.send({ status: 0, error: "The Token was not found" });
     return;
   }
+
+  req.currentUser = users[indexOf];
   next();
 };
 
