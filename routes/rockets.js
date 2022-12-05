@@ -34,32 +34,32 @@ app.post("/", (req, res) => {
 
 
 
-app
-  .route("/:id")
-  .get((req, res) => {
-    res.send(
-      `Get single rocket with ID : ${req.params.id}, ${
-        req.state[req.params.id]
-      }`
-    );
-  })
-  .put((req, res) => {
-    const updatedRocket = req.params.id;
-    const indexOf = req.state.findIndex(
-      (mission) => mission.id === Number(updatedRocket)
-    );
-    req.state[indexOf] = req.body;
-    res.send(`updated rocket with ID: ${req.params.id}`);
-  })
-  .delete((req, res) => {
-    const deletedRocket = req.params.id;
-    const indexOf = req.state.findIndex(
-      (mission) => mission.id === Number(deletedRocket)
-    );
+// app
+//   .route("/:id")
+//   .get((req, res) => {
+//     res.send(
+//       `Get single rocket with ID : ${req.params.id}, ${
+//         req.state[req.params.id]
+//       }`
+//     );
+//   })
+//   .put((req, res) => {
+//     const updatedRocket = req.params.id;
+//     const indexOf = req.state.findIndex(
+//       (mission) => mission.id === Number(updatedRocket)
+//     );
+//     req.state[indexOf] = req.body;
+//     res.send(`updated rocket with ID: ${req.params.id}`);
+//   })
+//   .delete((req, res) => {
+//     const deletedRocket = req.params.id;
+//     const indexOf = req.state.findIndex(
+//       (mission) => mission.id === Number(deletedRocket)
+//     );
 
-    req.state.splice(indexOf, 1);
-    res.send(`deleted rocket with ID : ${req.params.id}`);
-    console.log(req.state);
-  });
+//     req.state.splice(indexOf, 1);
+//     res.send(`deleted rocket with ID : ${req.params.id}`);
+//     console.log(req.state);
+//   });
 
 module.exports = app;
