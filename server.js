@@ -26,7 +26,11 @@ const auth = (req, res, next) => {
   const indexOf = users.findIndex((user) => {
     return user.token === Number(req.headers.token);
   });
-  console.log(indexOf);
+  if (indexOf === -1) {
+    res.send({ status: 0, error: "The Token was not found" });
+    return;
+  }
+  next();
 };
 
 app.use("/", require("./routes/rockets"));
